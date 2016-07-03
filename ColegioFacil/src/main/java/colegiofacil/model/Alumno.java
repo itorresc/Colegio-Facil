@@ -1,14 +1,28 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package colegiofacil.model;
+
+import colegiofacil.tipoDato.Correo;
+import colegiofacil.tipoDato.Fecha;
+import colegiofacil.tipoDato.RUT;
+import colegiofacil.tipoDato.Sexo;
+import colegiofacil.tipoDato.Texto;
 
 /**
  *
- * @author itorres
+ * @author Iván Torres Curinao
  */
-public class Alumno {
+public class Alumno extends Usuario {
+
+    public Alumno(RUT rut, Texto nombres, Texto apellidos, Fecha fechaNacimiento,
+            Texto telefonoMovil, Correo correo, Sexo sexo) {
+        super(
+                rut,
+                nombres,
+                apellidos,
+                fechaNacimiento,
+                telefonoMovil,
+                correo,
+                sexo
+        );
+    }
 
 }

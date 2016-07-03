@@ -1,12 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package colegiofacil.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Objects;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,7 +15,7 @@ import javax.persistence.TemporalType;
 
 /**
  *
- * @author itorres
+ * @author Iván Torres Curinao
  */
 @Entity
 @Table(name = "alumno")
@@ -31,7 +27,7 @@ public class AlumnoEntity implements Serializable {
     @Id
     @Basic(optional = false)
     @Column(name = "id")
-    private Integer id;
+    private short id;
     @Basic(optional = false)
     @Column(name = "rut")
     private String rut;
@@ -49,23 +45,22 @@ public class AlumnoEntity implements Serializable {
     public AlumnoEntity() {
     }
 
-    public AlumnoEntity(Integer id) {
+    public AlumnoEntity(Short id) {
         this.id = id;
     }
 
-    public AlumnoEntity(Integer id, String rut, String nombre, String apellido, Date timeStamp) {
+    public AlumnoEntity(Short id, String rut, String nombre, String apellido) {
         this.id = id;
         this.rut = rut;
         this.nombre = nombre;
         this.apellido = apellido;
-        this.timeStamp = timeStamp;
     }
 
-    public Integer getId() {
+    public Short getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Short id) {
         this.id = id;
     }
 
@@ -103,22 +98,28 @@ public class AlumnoEntity implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        int hash = 7;
+        hash = 23 * hash + this.id;
+        hash = 23 * hash + Objects.hashCode(this.rut);
         return hash;
     }
 
     @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof AlumnoEntity)) {
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
             return false;
         }
-        AlumnoEntity other = (AlumnoEntity) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if (getClass() != obj.getClass()) {
             return false;
         }
-        return true;
+        final AlumnoEntity other = (AlumnoEntity) obj;
+        if (this.id != other.id) {
+            return false;
+        }
+        return Objects.equals(this.rut, other.rut);
     }
 
     @Override
