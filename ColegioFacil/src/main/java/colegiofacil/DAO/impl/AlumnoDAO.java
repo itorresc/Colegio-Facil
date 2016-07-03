@@ -2,8 +2,17 @@ package colegiofacil.DAO.impl;
 
 import colegiofacil.entities.AlumnoEntity;
 import colegiofacil.model.Alumno;
+import colegiofacil.model.excepciones.FechaException;
+import colegiofacil.model.excepciones.RutException;
+import colegiofacil.tipoDato.Correo;
+import colegiofacil.tipoDato.Fecha;
+import colegiofacil.tipoDato.RUT;
+import colegiofacil.tipoDato.Sexo;
+import colegiofacil.tipoDato.Texto;
 import colegiofacil.validacion.ResultadoMetodo;
 import colegiofacil.validacion.impl.ResultadoMetodoImpl;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.EntityManager;
 import org.apache.log4j.Logger;
 
@@ -17,6 +26,34 @@ public class AlumnoDAO extends EclipseLinkDAO {
 
     public AlumnoDAO(EntityManager entityManager) {
         super(entityManager);
+    }
+
+    public List<Alumno> getAlumno() {
+        LOG.debug("Ejecutando consulta para obtener alumnos.");
+
+        String consulta = " SELECT alumnoEntity"
+                + " FROM AlumnoEntity alumnoEntity";
+
+        crearQueryTipica(consulta);
+
+        List<Alumno> alumnoList = new ArrayList<>();
+
+        for (AlumnoEntity alumnoEntity : (List<AlumnoEntity>) getResultList()) {
+            Alumno alumno = null;
+            try {
+                alumno = new Alumno(
+                        new RUT(alumnoEntity.getRut()),
+                        new Texto(alumnoEntity.getNombre()),
+                        new Texto(alumnoEntity.getApellido()),
+                        new Fecha("12-06-1986"),
+                        new Texto("ivan"),
+                        new Correo("ivan@notengo.cl"),
+                        Sexo.FEMENINO);
+                alumnoList.add(alumno);
+            } catch (FechaException | RutException ex) {
+            }
+        }
+        return alumnoList;
     }
 
     /**
