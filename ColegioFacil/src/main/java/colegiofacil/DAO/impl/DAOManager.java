@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package colegiofacil.DAO.impl;
 
 import colegiofacil.DAO.ProcedimientoDAO;
@@ -22,21 +17,38 @@ import org.apache.log4j.Logger;
  */
 public class DAOManager implements ProcedimientoNoTransaccionalDAO, ProcedimientoTransaccionalDAO {
 
-    public static final Logger log = Logger.getLogger(DAOManager.class);
+    public static final Logger LOG = Logger.getLogger(DAOManager.class);
 
     protected final EntityManager entityManager;
+    protected FechaHoraDAO fechaHoraDAO = null;
+    protected AlumnoDAO alumnoDAO = null;
 
     public DAOManager() {
         entityManager = Global.emf.createEntityManager();
         entityManager.setFlushMode(FlushModeType.COMMIT);
+
+    }
+
+    public FechaHoraDAO getFechaHoraDAO() {
+        if (fechaHoraDAO == null) {
+            fechaHoraDAO = new FechaHoraDAO(entityManager);
+        }
+        return fechaHoraDAO;
+    }
+
+    public AlumnoDAO getAlumnoDAO() {
+        if (alumnoDAO == null) {
+            alumnoDAO = new AlumnoDAO(entityManager);
+        }
+        return alumnoDAO;
     }
 
     @Override
     public Object ejecutar(ProcedimientoDAO procedimientoDAO) {
-        log.debug("ejecutando procedimiento no transaccional...");
+        LOG.debug("ejecutando procedimiento no transaccional...");
         try {
             Object ret = procedimientoDAO.ejecutar(this);
-            log.debug("procedimiento ejecutado correctamente...");
+            LOG.debug("procedimiento ejecutado correctamente...");
             return ret;
         } catch (Exception exception) {
 //            Funciones.crearLogExcepcion(exception);
@@ -48,15 +60,15 @@ public class DAOManager implements ProcedimientoNoTransaccionalDAO, Procedimient
 
     @Override
     public Object transaccion(ProcedimientoDAO procedimientoDAO) {
-        log.debug("iniciando transacción...");
+        LOG.debug("iniciando transacción...");
         entityManager.getTransaction().begin();
         try {
             Object retorno = procedimientoDAO.ejecutar(this);
             entityManager.getTransaction().commit();
-            log.debug("transacción ejecutada correctamente...");
+            LOG.debug("transacción ejecutada correctamente...");
             return retorno;
         } catch (RollbackException rollbackException) {
-            log.debug(rollbackException.getMessage());
+            LOG.debug(rollbackException.getMessage());
             if (entityManager.getTransaction().isActive()) {
                 entityManager.getTransaction().rollback();
             }

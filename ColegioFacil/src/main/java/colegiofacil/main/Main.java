@@ -14,7 +14,8 @@ import org.apache.log4j.Logger;
  */
 public class Main {
 
-    private static final Logger log = Logger.getLogger(PanelPrincipal.class);
+    private static final Logger LOG = Logger.getLogger(PanelPrincipal.class);
+
     private static PanelPrincipal ventanaPrincipal;
 
     public static PanelPrincipal getVentanaPrincipal() {
@@ -31,17 +32,17 @@ public class Main {
                     "Error", JOptionPane.ERROR_MESSAGE);
             Utils.cerrarAplicacion();
         }
-        log.info("Iniciando Aplicacion");
+        LOG.info("Iniciando Aplicacion");
         // Mostrar S.O.
-        log.info("S.O. cliente: " + System.getProperty("os.name") + " " + System.getProperty("os.version") + " "
+        LOG.info("S.O. cliente: " + System.getProperty("os.name") + " " + System.getProperty("os.version") + " "
                 + System.getProperty("os.arch"));
         // Mostrar usuario S.0.
-        log.info("Nombre usuario S.O: " + System.getProperty("user.name"));
+        LOG.info("Nombre usuario S.O: " + System.getProperty("user.name"));
         // Mostrar version java
-        log.info("Version JRE: " + System.getProperty("java.version") + " de " + System.getProperty("java.vendor"));
+        LOG.info("Version JRE: " + System.getProperty("java.version") + " de " + System.getProperty("java.vendor"));
         // Obtiene los valores del archivo de propiedades
         Utils.leerArchivoPropiedades();
-        // 
+        //
 
         // Levantar ventana principal
         ventanaPrincipal = new PanelPrincipal();
