@@ -22,7 +22,7 @@ import org.eclipse.persistence.jpa.JpaEntityManager;
  */
 public class EclipseLinkDAO implements PersistenceDAO {
 
-    private static final Logger log = Logger.getLogger(EclipseLinkDAO.class);
+    private static final Logger LOG = Logger.getLogger(EclipseLinkDAO.class);
 
     protected EntityManager entityManager;
     private Query query;
@@ -127,10 +127,10 @@ public class EclipseLinkDAO implements PersistenceDAO {
         } else {
             try {
                 Object object = query.getSingleResult();
-                log.debug("registro obtenido correctamente...");
+                LOG.debug("registro obtenido correctamente...");
                 return object;
             } catch (NoResultException noResultException) {
-                log.debug("registro no encontrado");
+                LOG.debug("registro no encontrado");
                 return null;
             }
         }
@@ -142,7 +142,7 @@ public class EclipseLinkDAO implements PersistenceDAO {
             throw new NullPointerException("Query nula");
         } else {
             List list = query.getResultList();
-            log.debug("Registros obtenidos: " + list.size());
+            LOG.debug("Registros obtenidos: " + list.size());
             return list;
         }
     }
@@ -172,7 +172,7 @@ public class EclipseLinkDAO implements PersistenceDAO {
             throw new NullPointerException("Query nula");
         } else {
             int registrosActualizados = query.executeUpdate();
-            log.debug("Registros actualizados: " + registrosActualizados);
+            LOG.debug("Registros actualizados: " + registrosActualizados);
             return registrosActualizados;
         }
     }
