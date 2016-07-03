@@ -51,8 +51,7 @@ public class DAOManager implements ProcedimientoNoTransaccionalDAO, Procedimient
             LOG.debug("procedimiento ejecutado correctamente...");
             return ret;
         } catch (Exception exception) {
-//            Funciones.crearLogExcepcion(exception);
-            return ResultadoMetodoImpl.setError("Error al ejecutar procedimiento en base de datos");
+            return ResultadoMetodoImpl.setError(exception.getMessage());
         } finally {
             entityManager.close();
         }
@@ -76,7 +75,7 @@ public class DAOManager implements ProcedimientoNoTransaccionalDAO, Procedimient
         } catch (Exception e) {
             entityManager.getTransaction().rollback();
             Utils.crearLogExcepcion(e);
-            return ResultadoMetodoImpl.setError("Error al ejecutar transacción en base de datos");
+            return ResultadoMetodoImpl.setError(e.getMessage());
         } finally {
             entityManager.close();
         }
