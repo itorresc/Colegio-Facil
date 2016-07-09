@@ -1,4 +1,4 @@
-package colegiofacil.utilities;
+package colegiofacil.utilidades;
 
 import java.io.IOException;
 import java.net.ServerSocket;

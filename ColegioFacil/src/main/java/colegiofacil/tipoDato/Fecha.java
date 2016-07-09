@@ -2,7 +2,7 @@ package colegiofacil.tipoDato;
 
 import colegiofacil.DAO.ProcedimientoNoTransaccionalDAO;
 import colegiofacil.DAO.impl.DAOManager;
-import colegiofacil.model.excepciones.FechaException;
+import colegiofacil.excepciones.FechaException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Month;

@@ -1,4 +1,4 @@
-package colegiofacil.utilities;
+package colegiofacil.utilidades;
 
 import colegiofacil.main.Main;
 import java.awt.Image;

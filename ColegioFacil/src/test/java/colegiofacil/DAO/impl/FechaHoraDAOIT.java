@@ -1,7 +1,7 @@
 package colegiofacil.DAO.impl;
 
 import colegiofacil.DAO.ProcedimientoNoTransaccionalDAO;
-import colegiofacil.utilities.Global;
+import colegiofacil.utilidades.Global;
 import java.time.LocalDateTime;
 import javax.persistence.Persistence;
 import static org.junit.Assert.assertNotNull;

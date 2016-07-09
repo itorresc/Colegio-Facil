@@ -1,4 +1,4 @@
-package colegiofacil.model.excepciones;
+package colegiofacil.excepciones;
 
 /**
  *

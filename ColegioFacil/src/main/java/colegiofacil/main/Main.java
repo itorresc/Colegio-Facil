@@ -1,7 +1,7 @@
 package colegiofacil.main;
 
-import colegiofacil.forms.PanelPrincipal;
-import colegiofacil.utilities.Utils;
+import colegiofacil.formularios.PanelPrincipal;
+import colegiofacil.utilidades.Utils;
 import com.pagosoft.plaf.PlafOptions;
 import java.awt.Dimension;
 import javax.swing.JFrame;

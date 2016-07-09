@@ -1,6 +1,6 @@
 package colegiofacil.tipoDato;
 
-import colegiofacil.model.excepciones.RutException;
+import colegiofacil.excepciones.RutException;
 import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

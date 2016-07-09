@@ -1,9 +1,9 @@
 package colegiofacil.DAO.impl;
 
-import colegiofacil.entities.AlumnoEntity;
-import colegiofacil.model.Alumno;
-import colegiofacil.model.excepciones.FechaException;
-import colegiofacil.model.excepciones.RutException;
+import colegiofacil.entidades.AlumnoEntity;
+import colegiofacil.modelo.Alumno;
+import colegiofacil.excepciones.FechaException;
+import colegiofacil.excepciones.RutException;
 import colegiofacil.tipoDato.Correo;
 import colegiofacil.tipoDato.Fecha;
 import colegiofacil.tipoDato.RUT;

@@ -1,6 +1,6 @@
-package colegiofacil.forms;
+package colegiofacil.formularios;
 
-import colegiofacil.utilities.Utils;
+import colegiofacil.utilidades.Utils;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import org.apache.log4j.Logger;

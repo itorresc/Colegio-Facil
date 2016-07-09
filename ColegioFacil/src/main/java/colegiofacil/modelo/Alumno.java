@@ -1,4 +1,4 @@
-package colegiofacil.model;
+package colegiofacil.modelo;
 
 import colegiofacil.tipoDato.Correo;
 import colegiofacil.tipoDato.Fecha;
